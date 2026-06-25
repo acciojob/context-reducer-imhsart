@@ -1,6 +1,6 @@
 import React, {useState, useContext, useRef} from 'react'
 import { authContext } from '../Context/AuthContext'
-
+import '../styles/App.css'
 const App = () => {
   const {itemList, setItemList} = useContext(authContext)
   const [inputText, setInputText] = useState('')
@@ -27,9 +27,8 @@ const App = () => {
     setAuth('Current user:, isAuthenticated: No')
   }
 
-
   return (
-    <div>
+    <div className='container'>
       <button id='login-btn' onClick={handleLogin}>Login</button>
       <button id='signout' onClick={handleLogout}>Signout</button>
       <form onSubmit={handleSubmit}>
@@ -42,7 +41,7 @@ const App = () => {
         {
           (itemList.length > 0) && 
           itemList.map(item => {
-            return <li key={`item-${item.name}`} id={`item-${item.name}`}>{item.name} <button onClick={() => handleDelete(item.id)} id={`remove-${item.name}`}>Remove</button></li>
+            return <li key={`item-${item.name}`} id={`item-${item.name}`}><h2>{item.name}</h2> <button onClick={() => handleDelete(item.id)} id={`remove-${item.name}`}>Remove</button></li>
           })
         }
       </ul>
